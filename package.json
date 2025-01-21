@@ -4,12 +4,25 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "minify": "terser src/portfolio.js -o ./output/portfolio.min.js --compress --mangle",
+    "compilecss": "postcss src/portfolio.css --use autoprefixer -o output/portfolio.min.css",
+    "compile": "npm run minify && npm run compilecss",
+    "start": "npm run compile && nodemon server.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "express": "^4.21.2"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.20",
+    "nodemon": "^3.1.9",
+    "postcss": "^8.4.49",
+    "postcss-cli": "^11.0.0",
+    "postcss-preset-env": "^10.1.3",
+    "postcss-pxtorem": "^6.1.0",
+    "terser": "^5.37.0"
   }
 }

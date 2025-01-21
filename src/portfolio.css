@@ -16,22 +16,51 @@ body{
     justify-content: center;
     flex-wrap: wrap;
     border-bottom: 2px solid black;
+    overflow: hidden;
 }
 
-.AlzonHeader
+.InfoHeader
 {
-    align-items: center;
-    align-self: center;
-    /*text-align: center;*/
-    max-width: 700px;
-    min-width: 700px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-grow: 1;
+    margin-left: 10px;
+}
+
+.ProfileSkills
+{
+    margin: 30px 0px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.ProfileSkill
+{
+    border: 1px solid black;
+    background-color: whitesmoke;
+    font-size: 32px;
+    color:#101018;
+    margin-right: 10px;
+    padding: 5px;
+    border-radius: 15px;
+}
+
+.ProfileOccupation
+{
+    font-size: 32px;
+    color: whitesmoke;
+}
+
+.ProfileName
+{
+    font-size: 62px;
 }
 
 .AlzonHeaderImg
 {
-    min-width: 400px;
-    height: 400px;
-    width: 400px;
+    height: 320px;
+    width: 320px;
     margin: 15px;
     border: 2px solid black;
     border-radius:50%;
@@ -86,6 +115,7 @@ body{
     margin-left: 10px;
     margin-right: 10px;
     /*color: orange;*/
+    word-wrap: break-word;
 }
 
 .HeaderContainer 
@@ -105,10 +135,9 @@ body{
     color: white;
 }
 
-.ProfileSection-Professional
+.ProfileSection
 {
-    background-image: url("./res/greenplanet.jpg");
-    background-size: contain;
+    background-size: cover;
     background-color: rgba(16,16,24);
     background-blend-mode: multiply;
     width: 100%;
@@ -118,6 +147,17 @@ body{
     align-items: center;
     margin-top: 20px;
 }
+
+.ProfileSection.ProfessionalSection
+{
+    background-image: url("./res/greenplanet.jpg");
+}
+
+.ProfileSection.HobbySection
+{
+    background-image: url("./res/engine.jpg");
+}
+
 
 .Spikes {
     position: relative;
@@ -145,13 +185,15 @@ body{
     width: 380px;
     height: 214px;
     flex-grow: 1;
-    background-size: contain;
+    background-size: cover;
+    background-position: center;
     border-radius: 5%;
 }
 
 .PortfolioItem
 {
     margin: 20px 10px;
+    max-width: 380px;
 }
 
 .PortfolioGridLayout
@@ -162,16 +204,48 @@ body{
     width: 100%;
 }
 
+@media (max-width: 419px) {
+    .LinkText
+    {  
+        max-width: 300px;
+    }
+}
+
+@media (max-width: 350px) {
+    .PortfolioItemImg
+    {
+        width: 285px;
+        height: 161px;
+    }
+
+    .LinkText
+    {  
+        max-width: 250px;
+    }
+
+    .LinkContainer{
+        width: initial;
+    }
+}
+
+
+
 @media (max-width: 1199px) {
     /* … */
     .PortfolioGridLayout
     {  
         justify-content: center;
     }
+
+    .VideoPlayer
+    {
+        width: 100%;
+    }
 }
 
 .PortfolioItemTitle
 {
+    max-width: 380px;
     font-size: 20px;
     margin: 15px 0px;
 }
@@ -179,4 +253,152 @@ body{
 .PortfolioAuthor
 {
     color: orange;
+}
+
+.LinkText:hover {
+    cursor: pointer;
+}
+
+.ModalView {
+    display: none; 
+    position: fixed; 
+    z-index: 20; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+
+    overflow: hidden;
+    pointer-events: none;
+}
+
+@keyframes scrollintoview {
+    0%   {top:100%}
+    100% {top:0%;}
+  }
+
+  @keyframes scrolloutview {
+    0%   {top:0%}
+    100% {top:100%;}
+  }
+  
+.ModalViewAnimator
+{
+    position: relative;
+    animation-name: scrollintoview;
+    animation-duration: 0.5s;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    background-color: rgb(0,0,0); 
+    background-color: rgba(0,0,0,0.4); 
+    backdrop-filter: blur(4px);
+}
+
+.ModalHidden
+{
+    animation-name: scrolloutview;
+    animation-fill-mode: forwards;
+}
+
+/* Modal Content */
+.ModalContent {
+    background-color: #fefefe;
+    margin: auto;
+    width: 100%;
+    height: 100%;
+    /*width: 1400px;*/
+    justify-self: center;
+    background-color: #10101800;
+    pointer-events:all;
+    overflow-y: scroll;
+}
+  
+  /* The Close Button */
+  .CloseModal {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    margin: 20px;
+  }
+  
+  .CloseModal:hover,
+  .CloseModal:focus {
+    color: darkred;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  .BlogEntryContainer
+  {
+    width: 1200px;
+    justify-self: center;
+    height:100%;
+    max-width:100%;
+  }
+
+  .BlogBodyContainer
+  {
+    background: #151515;
+    padding: 10px;
+  }
+
+  .BlogTitle
+  {
+    font-size: 62px;
+    border-bottom: 20px;
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: #151515;
+    border: 1px solid black;
+  }
+
+  .BlogSummary
+  {
+    background: #151515;
+    padding: 10px;
+    border: 1px solid black;
+  }
+
+  .BlogImage
+  {
+    height: 700px;
+    background-size: cover;
+    margin: 20px;
+
+    border: 1px solid black;
+    background-position: center;
+  }
+
+  /* General styles for the code block */
+pre {
+    background-color: #2d2d2d; /* Dark background */
+    color: #cccccc; /* Default text color */
+    font-family: 'Fira Code', 'Courier New', monospace; /* IDE-like font */
+    font-size: 14px; /* Readable font size */
+    line-height: 1.5; /* Space between lines */
+    padding: 16px; /* Inner spacing */
+    border-radius: 8px; /* Rounded corners */
+    overflow: auto; /* Scroll for long lines */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+    border: 1px solid #444; /* Subtle border */
+}
+
+pre{
+    counter-reset: line;
+}
+code{
+    counter-increment: line;
+}
+
+code:before{
+    content: counter(line);
+}
+
+code:before{
+    -webkit-user-select: none;
 }

@@ -1,0 +1,7 @@
+{
+    "watch": ["src/"],
+    "ext": "js,html,css",
+    "execMap": {
+        "js": "npm run compile && node"
+    }
+  }
